@@ -61,7 +61,6 @@ app.get('/myFavs', function(req, res){
 
 app.post('/save', function(req, res) {
 
-    console.log('in server', req.body)
     let movie = req.body.data;
     db.saveFavorite(movie.title, movie.release_date, movie.poster_path, movie.vote_average, () => {
         res.status(200).send();
@@ -70,6 +69,11 @@ app.post('/save', function(req, res) {
 })
 
 app.post('/delete', function(req, res) {
+
+    let movieTitle = req.body.data.title;
+    db.deleteFavorite(movieTitle, () => {
+        res.status(200).send();
+    })
 
 })
 

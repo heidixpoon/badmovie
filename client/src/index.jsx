@@ -59,12 +59,22 @@ class App extends React.Component {
     })
     .then(() => {
       console.log('success in view save!')
-      // this.getFavorites()
+      this.getFavorites()
     })
 
   }
 
-  deleteMovie() {
+  deleteMovie(eachMovieInfo) {
+
+
+    axios.post('/delete', {
+      data: eachMovieInfo
+    })
+    .then(() => {
+      console.log('deleted!')      
+      this.getFavorites()
+    })
+
   }
 
   swapFavorites() {
@@ -87,6 +97,7 @@ class App extends React.Component {
           movies={this.state.showFaves ? this.state.favorites : this.state.movies} 
           showFaves={this.state.showFaves} 
           saveMovie={this.saveMovie}
+          deleteMovie={this.deleteMovie}
         />
 
       </div>

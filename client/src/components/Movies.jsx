@@ -18,7 +18,7 @@ class Movies extends React.Component {
 //
 
   render() {
-    let {movieList, saveMovie, favList, showFaves} = this.props
+    let {movieList, saveMovie, favList, showFaves, deleteMovie} = this.props
   
     return (
         <ul className="movies">
@@ -26,7 +26,7 @@ class Movies extends React.Component {
         { showFaves ?
           favList.map((movie, i) => {
             return(
-              <EachMovie key={i} movieInfo={movie} />
+              <EachMovie key={i} movieInfo={movie} deleteMovie={deleteMovie}/>
             )
           })
         

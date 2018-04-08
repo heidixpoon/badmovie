@@ -7,23 +7,29 @@ class EachMovie extends React.Component {
     this.state = {
     }
 
-    this.onClickSave = this.onClickSave.bind(this)
+    this.onClickAction = this.onClickAction.bind(this)
  
   }
 
-  onClickSave(){
+  onClickAction(){
     let {movieInfo} = this.props
-    this.props.saveMovie(movieInfo)
+    if(this.props.saveMovie){
+      this.props.saveMovie(movieInfo)
+    } else{
+      this.props.deleteMovie(movieInfo);
+    }
+
+    
   }
 
 
 
   render() {
-    let {movieInfo} = this.props
+    let {movieInfo, saveMovie} = this.props
 
     return (
 
-      <li className="movie_item" onClick={this.onClickSave}>
+      <li className="movie_item" onClick={this.onClickAction}>
         <img src={`http://image.tmdb.org/t/p/w185${movieInfo.poster_path}`}/>
         <div className="movie_description">
           <h2>{movieInfo.title}</h2>

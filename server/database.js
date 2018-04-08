@@ -33,7 +33,13 @@ const saveFavorite = function(title, release_date, poster_path, vote_average, ca
 };
 
 
-const deleteFavorite = function(callback) {
+const deleteFavorite = function(title, callback) {
+
+  let queryStr = 'DELETE FROM favorites WHERE title=?;'
+  connection.query(queryStr, [title], function(err, results){
+    callback();
+  })
+
 };
 
 
